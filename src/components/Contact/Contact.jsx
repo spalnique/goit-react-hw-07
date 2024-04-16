@@ -1,14 +1,14 @@
 import { useDispatch } from 'react-redux';
-import { deleteContact } from '../../redux/contactsSlice';
+import { deleteContact } from '../../redux/operations';
 import css from '../Contact/Contact.module.css';
 
-const Contact = ({ contact: { id, username, phone } }) => {
+const Contact = ({ contact: { id, name, phone } }) => {
   const dispatch = useDispatch();
 
   return (
     <div className={css.contactContainer}>
       <ul className={css.contactInfo}>
-        <li>{username}</li>
+        <li>{name}</li>
         <li>{phone}</li>
       </ul>
       <button

@@ -3,8 +3,8 @@ import { useDispatch } from 'react-redux';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import clsx from 'clsx';
 import * as Yup from 'yup';
-import { addContact } from '../../redux/contactsSlice';
 import { formikInitValues } from '../../redux/constants';
+import { addContact } from '../../redux/operations';
 
 import css from '../ContactForm/ContactForm.module.css';
 
@@ -19,12 +19,14 @@ const ContactForm = () => {
       .max(50, 'Phone number is too long!')
       .required('Required'),
   });
-  const usernameFieldId = useId();
+  const nameFieldId = useId();
   const phoneFieldId = useId();
 
   const dispatch = useDispatch();
 
   const handleSubmit = (values, form) => {
+    console.log('values:', values);
+    console.log('form:', form);
     dispatch(addContact(values));
     form.resetForm();
   };
@@ -38,13 +40,13 @@ const ContactForm = () => {
         return (
           <Form className={css.formContainer}>
             <div className={css.fieldContainer}>
-              <label className={css.labelText} htmlFor={usernameFieldId}>
-                Username
+              <label className={css.labelText} htmlFor={nameFieldId}>
+                Name
               </label>
               <Field
                 type="text"
-                name="username"
-                id={usernameFieldId}
+                name="name"
+                id={nameFieldId}
                 className={clsx(
                   css.formInput,
                   formikData.touched.username &&
@@ -53,7 +55,7 @@ const ContactForm = () => {
                 )}
               />
               <ErrorMessage
-                name="username"
+                name="name"
                 component="p"
                 className={css.errorMessage}
               />

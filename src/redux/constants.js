@@ -10,6 +10,6 @@ export const appInitState = {
 };
 
 export const formikInitValues = {
-  username: '',
+  name: '',
   phone: '',
 };
