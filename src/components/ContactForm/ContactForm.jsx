@@ -16,6 +16,7 @@ const ContactForm = () => {
   const handleSubmit = (values, form) => {
     dispatch(addContact(values));
     form.resetForm();
+    document.querySelector('input[name="name"]').focus(); // я не придумав, як у компонент Field форміка
   };
 
   return (
