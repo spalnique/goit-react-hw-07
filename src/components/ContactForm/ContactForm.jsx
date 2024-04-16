@@ -4,7 +4,7 @@ import { Formik, Form, Field, ErrorMessage } from 'formik';
 import clsx from 'clsx';
 import * as Yup from 'yup';
 import { addContact } from '../../redux/contactsSlice';
-import { formikInitialValues } from '../../redux/constants';
+import { formikInitValues } from '../../redux/constants';
 
 import css from '../ContactForm/ContactForm.module.css';
 
@@ -31,7 +31,7 @@ const ContactForm = () => {
 
   return (
     <Formik
-      initialValues={formikInitialValues}
+      initialValues={formikInitValues}
       validationSchema={FeedbackSchema}
       onSubmit={handleSubmit}>
       {(formikData) => {
