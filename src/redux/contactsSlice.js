@@ -30,7 +30,7 @@ const handleFulfilled = (state, action) => {
       }, []);
       break;
     default:
-      state;
+      return state;
   }
 };
 
