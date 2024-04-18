@@ -17,18 +17,18 @@ const handleFulfilled = (state, action) => {
     case 'contacts/fetchAll/fulfilled':
       state.loading = false;
       state.items = action.payload;
-      break;
+      return;
     case 'contacts/addContact/fulfilled':
       state.loading = false;
       state.items.push(action.payload);
-      break;
+      return;
     case 'contacts/deleteContact/fulfilled':
       state.loading = false;
       state.items = state.items.reduce((acc, contact) => {
         contact.id !== action.payload.id && acc.push(contact);
         return acc;
       }, []);
-      break;
+      return;
     default:
       return state;
   }
